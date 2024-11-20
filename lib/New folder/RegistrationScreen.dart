@@ -22,36 +22,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(size.width * 0.04),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 40),
+            SizedBox(height: size.height * 0.05),
             Center(
               child: Text(
                 'Create Account',
                 style: GoogleFonts.poppins(
-                  fontSize: 20,
+                  fontSize: size.width * 0.05,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xff0f3cc9),
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: size.height * 0.01),
             Center(
               child: Text(
                 'Personal Information',
                 style: GoogleFonts.poppins(
-                  fontSize: 18,
+                  fontSize: size.width * 0.045,
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: size.height * 0.03),
             HorizontalStepper(
               currentStep: currentStep,
               onStepTap: (index) {
@@ -60,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 });
               },
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: size.height * 0.03),
             CustomTextField(
               controller: fullNameController,
               labelText: "Full Name",
@@ -83,14 +85,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 return null;
               },
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: size.height * 0.02),
             RichText(
               text: TextSpan(
                 children: [
                   TextSpan(
                     text: 'Gender',
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
+                      fontSize: size.width * 0.04,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
                     ),
@@ -98,26 +100,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextSpan(
                     text: '*',
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
+                      fontSize: size.width * 0.04,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xff0F3CC9),
+                      color: const Color(0xff0F3CC9),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 2),
+            SizedBox(height: size.height * 0.01),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildGenderRadio('Male'),
-                const SizedBox(width: 10),
+                SizedBox(width: size.width * 0.02),
                 _buildGenderRadio('Female'),
-                const SizedBox(width: 10),
+                SizedBox(width: size.width * 0.02),
                 _buildGenderRadio('Other'),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: size.height * 0.02),
             CustomTextField(
               controller: dobController,
               labelText: 'Date of Birth',
@@ -145,24 +147,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
             ),
             CustomTextField(
-            controller: birthPlaceController,
-            hintText: 'Select State',
-            labelText: 'State',
-            isDropdown: true,
-            dropdownItems: const [
-              'Uttar Pradesh',
-              'Maharashtra',
-              'Delhi',
-              'Karnataka',
-              'Tamil Nadu',
-              'Gujarat',
-              'Rajasthan',
-            ],
-            onDropdownChanged: (value) {
-              print('Selected State: $value');
-            },
-          ),
-            const SizedBox(height: 30),
+              controller: birthPlaceController,
+              hintText: 'Select State',
+              labelText: 'State',
+              isDropdown: true,
+              dropdownItems: const [
+                'Uttar Pradesh',
+                'Maharashtra',
+                'Delhi',
+                'Karnataka',
+                'Tamil Nadu',
+                'Gujarat',
+                'Rajasthan',
+              ],
+              onDropdownChanged: (value) {
+                print('Selected State: $value');
+              },
+            ),
+            SizedBox(height: size.height * 0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -175,34 +177,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     );
                   },
-                  child: Text('back'),
-                  style: TextButton.styleFrom(
-                    textStyle: GoogleFonts.poppins(
-                      fontSize: 16,
+                  child: Text(
+                    'Back',
+                    style: GoogleFonts.poppins(
+                      fontSize: size.width * 0.045,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xff0F3CC9),
+                      color: const Color(0xff0F3CC9),
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 80,
-                ),
+                SizedBox(width: size.width * 0.1),
                 ElevatedButton(
                   onPressed: () {
                     debugPrint('Gender: $selectedGender');
                   },
                   style: ElevatedButton.styleFrom(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
-                    backgroundColor: Color(0xff0F3CC9),
+                    padding: EdgeInsets.symmetric(
+                        vertical: size.height * 0.015,
+                        horizontal: size.width * 0.1),
+                    backgroundColor: const Color(0xff0F3CC9),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Proceed',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: size.width * 0.045,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
@@ -217,15 +218,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _buildGenderRadio(String gender) {
+    final size = MediaQuery.of(context).size;
     return Expanded(
       child: Container(
-        height: 50,
+        height: size.height * 0.07,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(size.width * 0.02),
           border: Border.all(
             color: AppColors.textFieldBorderColor,
           ),
-          color: Color(0xffF1F4FF),
+          color: const Color(0xffF1F4FF),
         ),
         child: RadioListTile<String>(
           value: gender,
@@ -238,15 +240,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
           title: Text(
             gender,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: size.width * 0.035,
               fontWeight: FontWeight.w500,
               color:
-                  selectedGender == gender ? Color(0xff0F3CC9) : Colors.black,
+                  selectedGender == gender ? const Color(0xff0F3CC9) : Colors.black,
             ),
           ),
-          activeColor: Color(0xff0F3CC9),
+          activeColor: const Color(0xff0F3CC9),
           dense: true,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 2),
+          contentPadding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
         ),
       ),
     );
@@ -265,6 +267,7 @@ class HorizontalStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(4, (index) {
@@ -273,7 +276,8 @@ class HorizontalStepper extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                height: 30,
+                height: size.height * 0.04,
+                width: size.height * 0.04,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
@@ -282,19 +286,18 @@ class HorizontalStepper extends StatelessWidget {
                   ),
                 ),
                 child: CircleAvatar(
-                  backgroundColor:
-                      currentStep >= index ? Colors.white : Colors.white,
+                  backgroundColor: Colors.white,
                   child: Icon(
                     currentStep > index ? Icons.check : Icons.circle,
                     color: const Color(0xff0F3CC9),
-                    size: 10,
+                    size: size.width * 0.03,
                   ),
                 ),
               ),
               if (index != 3)
                 Container(
-                  width: 30,
-                  height: 2,
+                  width: size.width * 0.08,
+                  height: size.height * 0.003,
                   color: currentStep > index ? const Color(0xff0F3CC9) : Colors.grey,
                 ),
             ],

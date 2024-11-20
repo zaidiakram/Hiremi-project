@@ -38,12 +38,14 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Color(0xfff5f5f5),
+      backgroundColor: const Color(0xfff5f5f5),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: EdgeInsets.symmetric(
+              horizontal: size.width * 0.05,
+              vertical: size.height * 0.02,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -56,7 +58,7 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
                         TextSpan(
                           text: "Hire",
                           style: GoogleFonts.poppins(
-                            fontSize: 24,
+                            fontSize: size.width * 0.06,
                             fontWeight: FontWeight.w600,
                             color: Colors.black,
                           ),
@@ -64,7 +66,7 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
                         TextSpan(
                           text: "mi",
                           style: GoogleFonts.poppins(
-                            fontSize: 24,
+                            fontSize: size.width * 0.06,
                             fontWeight: FontWeight.w600,
                             color: Colors.lightBlue,
                           ),
@@ -73,26 +75,26 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: size.height * 0.01),
                 Text(
                   'Login here',
                   style: GoogleFonts.poppins(
-                    fontSize: 30,
+                    fontSize: size.width * 0.08,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xff0F3CC9),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: size.height * 0.015),
                 Text(
                   'Welcome back you’ve \nbeen missed!',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                    fontSize: 20,
+                    fontSize: size.width * 0.05,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey[700],
                   ),
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: size.height * 0.05),
                 Form(
                   key: _formKey,
                   child: Column(
@@ -134,9 +136,9 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
                           child: Text(
                             'Forgot password?',
                             style: GoogleFonts.poppins(
-                              fontSize: 12,
+                              fontSize: size.width * 0.03,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff0f3cc9),
+                              color: const Color(0xff0f3cc9),
                             ),
                           ),
                         ),
@@ -144,15 +146,14 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: size.height * 0.03),
                 SizedBox(
-                  height: 60,
-                  width: 357,
+                  height: size.height * 0.08,
+                  width: size.width * 0.9,
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _login,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xff0F3CC9),
-                      padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -165,38 +166,36 @@ class _LoginScreenUpdatedState extends State<LoginScreenUpdated> {
                         : Text(
                             'Sign in',
                             style: GoogleFonts.poppins(
-                              fontSize: 20,
+                              fontSize: size.width * 0.05,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
                           ),
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: size.height * 0.03),
                 SizedBox(
-                  height: 54,
-                  width: 357,
+                  height: size.height * 0.07,
+                  width: size.width * 0.9,
                   child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegisterScreen(),
-                    ),
-                  );
-                },
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterScreen(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xffffffff),
-                      padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-
                     ),
                     child: Text(
                       'Create new account',
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        fontSize: size.width * 0.04,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xff494949),
                       ),
